@@ -1,9 +1,32 @@
+<div class="row">
+  <div class="col-8 m-auto">
+    <form [formGroup]="formGroupClient">
+      <div class="mb-3">
+        <div class="display-6 text-center p-3">Cadastro de Clientes</div>
+        <label for="name" class="form-label">Nome: </label>
+        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nome">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="mb-3 d-flex justify-content-end">
+        <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
+        <button class="btn btn-danger" (click)="clean()">Limpar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
 <table class="table table-dark table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
+      <th scope="col">Opções</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +34,10 @@
       <th scope="row">{{client.id}}</th>
       <td>{{client.name}}</td>
       <td>{{client.email}}</td>
+      <td>
+        <button class="btn btn-primary me-1" (click)="edit(client)">Editar</button>
+        <button class="btn btn-danger" (click)="remove(client)">Excluir</button>
+      </td>
     </tr>
   </tbody>
 </table>
