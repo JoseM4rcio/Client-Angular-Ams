@@ -1,5 +1,5 @@
 import { ClientService } from './../client.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Client } from '../client';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -10,18 +10,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ClientsComponent implements OnInit {
   clients: Client[] = [];
+  client: Client = {} as Client;
   isEditing: boolean = false;
-  formGroupClient: FormGroup;
 
-  constructor(
-    private clientService: ClientService,
-    private formBuilder: FormBuilder
-  ) {
-    this.formGroupClient = formBuilder.group({
-      id: [''],
-      name: [''],
-      email: [''],
-    });
+  constructor(private clientService: ClientService,  private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -33,33 +25,35 @@ export class ClientsComponent implements OnInit {
     });
   }
 
-  save() {
+  onCleanEvent(){
+    this.isEditing = false;
+  }
+
+  onSaveEvent(client: Client) {
     if (this.isEditing) {
-      this.clientService.update(this.formGroupClient.value).subscribe({
+      this.clientService.update(client).subscribe({
         next: () => {
           this.loadClients();
-          this.formGroupClient.reset();
-          this.isEditing = false;
+          this.isEditing = true;
         }
       });
     }
     else {
-      this.clientService.save(this.formGroupClient.value).subscribe({
+      this.clientService.save(client).subscribe({
         next: data => {
           this.clients.push(data)
-          this.formGroupClient.reset();
         }
        });
     }
   }
 
   clean(){
-    this.formGroupClient.reset();
+
     this.isEditing = false;
   }
 
   edit(client: Client) {
-    this.formGroupClient.setValue(client);
+    this.client = client;
     this.isEditing = true;
   }
 

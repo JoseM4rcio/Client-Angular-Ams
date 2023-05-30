@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ClientService {
-  url = 'http://localhost:3005/clients';
+  url = 'http://localhost:3007/clients';
   constructor(private http: HttpClient) {}
 
   getClients(): Observable<Client[]> {

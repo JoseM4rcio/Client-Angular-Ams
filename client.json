@@ -2,7 +2,7 @@
   "clients": [
     {
       "id": 3,
-      "name": "Julio Gomes",
+      "name": "Julio Gomess",
       "email": "julio@gmail.com"
     },
     {
@@ -12,8 +12,23 @@
     },
     {
       "id": 5,
-      "name": "Jose Marciofsdfsdf",
+      "name": "Jose Marcio",
       "email": "marcio@gmail.com"
+    },
+    {
+      "id": 6,
+      "name": "Jose Marcio",
+      "email": "julio@gmail.com"
+    },
+    {
+      "id": 7,
+      "name": "Claudio Silva",
+      "email": "claudio@gmail.com"
+    },
+    {
+      "id": 8,
+      "name": "Helio Souza",
+      "email": "helio@gmail.com"
     }
   ]
 }
