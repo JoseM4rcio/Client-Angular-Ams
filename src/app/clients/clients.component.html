@@ -1,13 +1,9 @@
-<app-client-form
-[client]="client"
-(saveEvent)="onSaveEvent($event)"
-(cleanEvent)=" onCleanEvent()"
-></app-client-form>
 
-<table class="table table-light table-striped">
+<button class="btn btn-primary" (click)="create()">Novo</button>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">ID</th>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
       <th scope="col">Opções</th>
@@ -19,8 +15,8 @@
       <td>{{client.name}}</td>
       <td>{{client.email}}</td>
       <td>
-        <button class="btn btn-primary me-1" (click)="edit(client)">Editar</button>
-        <button class="btn btn-danger" (click)="remove(client)">Excluir</button>
+          <button class="btn btn-primary me-1" (click)="edit(client)">Editar</button>
+          <button class="btn btn-primary"      (click)="delete(client)">Excluir</button>
       </td>
     </tr>
   </tbody>

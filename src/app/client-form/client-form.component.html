@@ -1,19 +1,32 @@
 <div class="row">
   <div class="col-8 m-auto">
-    <form [formGroup]="formGroupClient">
-      <div class="mb-3">
-        <div class="display-6 text-center p-3">Cadastro de Clientes</div>
-        <label for="name" class="form-label">Nome: </label>
-        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nome">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email:</label>
-        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
-      </div>
-      <div class="mb-3 d-flex justify-content-end">
-        <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
-        <button class="btn btn-danger" (click)="clean()">Limpar</button>
-      </div>
-    </form>
+      <form [formGroup]="formGroupClient">
+        <div class="mb-3">
+          <div class="display-6 text-center">
+            Cadastro de Clientes
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome:</label>
+          <input type="text" formControlName="name"     class="form-control" id="name" placeholder="Nome">
+
+          <div *ngIf="submitted && name.invalid">
+              <small  class="text-danger">Nome inválido!</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" formControlName="email"   class="form-control" id="email" placeholder="Email">
+          <div *ngIf="submitted && email.invalid">
+            <small  class="text-danger">Email inválido!</small>
+          </div>
+
+        </div>
+        <div class="mb-3 d-flex justify-content-end">
+          <button class="btn btn-primary me-1" (click)="cancel()">Cancelar</button>
+          <button class="btn btn-primary" (click)="save()">Salvar</button>
+        </div>
+      </form>
+
+    </div>
   </div>
-</div>
